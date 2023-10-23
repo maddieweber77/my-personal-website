@@ -1,3 +1,5 @@
+// JavaScript (script.js)
+
 // Variables
 const paddle = document.getElementById("paddle");
 const ball = document.getElementById("ball");
@@ -23,30 +25,39 @@ function update() {
     ballY += ballSpeedY;
 
     // Ball collisions with walls
-    if (ballX > 390 || ballX < 0) {
+        if (ballX + ballSpeedX > 390 || ballX + ballSpeedX < 0) {
         ballSpeedX = -ballSpeedX;
-    }
+        }
 
-    if (ballY < 0) {
+        if (ballY + ballSpeedY < 0) {
         ballSpeedY = -ballSpeedY;
-    }
+        }
+
+    // Check if the ball hits the bottom
+        if (ballY + ballSpeedY > 300) {
+    // Reset the ball to the center
+    ballX = 200;
+    ballY = 200;
+    ballSpeedX = 5;
+    ballSpeedY = 5;
+        }
 
     // Ball collision with paddle
-    if (
-        ballY > 280 &&
-        ballY < 290 &&
-        ballX > parseInt(paddle.style.left) &&
-        ballX < parseInt(paddle.style.left) + paddleWidth
-    ) {
-        ballSpeedY = -ballSpeedY;
-    }
+        if (
+            ballY + ballSpeedY > 280 &&
+            ballY + ballSpeedY < 290 &&
+            ballX + ballSpeedX > parseInt(paddle.style.left) &&
+            ballX + ballSpeedX < parseInt(paddle.style.left) + paddleWidth
+        ) {
+            ballSpeedY = -ballSpeedY;
+        }
 
     // Ball collision with bricks
     bricks.forEach((brick) => {
-        if (ballY < brick.getBoundingClientRect().bottom &&
-            ballY > brick.getBoundingClientRect().top &&
-            ballX > brick.getBoundingClientRect().left &&
-            ballX < brick.getBoundingClientRect().right) {
+        if (ballY + ballSpeedY < brick.getBoundingClientRect().bottom &&
+            ballY + ballSpeedY > brick.getBoundingClientRect().top &&
+            ballX + ballSpeedX > brick.getBoundingClientRect().left &&
+            ballX + ballSpeedX < brick.getBoundingClientRect().right) {
             brick.style.display = "none";
             ballSpeedY = -ballSpeedY;
         }
