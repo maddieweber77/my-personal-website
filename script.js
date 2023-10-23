@@ -34,13 +34,13 @@ document.addEventListener("mousemove", (event) => {
 
 // Game loop
 function update() {
-    ballX += ballSpeedX;
+    ballX += ballSpeedX; // ballSpeedX is added to ballX to change the position (and same with Y)
     ballY += ballSpeedY;
 
     // Ball collisions with walls
         if (ballX + ballSpeedX > 390 || ballX + ballSpeedX < 0) {
-        ballSpeedX = -ballSpeedX;
-        }
+        ballSpeedX = -ballSpeedX; 
+        } // this subtracts ballSpeedX so that it doesn't go past the balls
 
         if (ballY + ballSpeedY < 0) {
         ballSpeedY = -ballSpeedY;
@@ -51,8 +51,7 @@ function update() {
     // Reset the ball to the center
     ballX = 200;
     ballY = 200;
-    ballSpeedX = 4;
-    ballSpeedY = 4;
+    startBallMovement()
         }
 
     // Ball collision with paddle
