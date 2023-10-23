@@ -17,8 +17,8 @@ function startBallMovement() {
     if (ballSpeedX === 0 && ballSpeedY === 0) {
         // Set the ball's speed to a random angle
         const randomAngle = Math.random() * Math.PI / 3 + Math.PI / 6; // Adjust this angle as needed
-        ballSpeedX = 3 * Math.cos(randomAngle);
-        ballSpeedY = -3 * Math.sin(randomAngle);
+        ballSpeedX = 4 * Math.cos(randomAngle);
+        ballSpeedY = -4 * Math.sin(randomAngle);
     }
 }
 
@@ -51,8 +51,8 @@ function update() {
     // Reset the ball to the center
     ballX = 200;
     ballY = 200;
-    ballSpeedX = 5;
-    ballSpeedY = 5;
+    ballSpeedX = 4;
+    ballSpeedY = 4;
         }
 
     // Ball collision with paddle
