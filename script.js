@@ -17,8 +17,8 @@ function startBallMovement() {
     if (ballSpeedX === 0 && ballSpeedY === 0) {
         // Set the ball's speed to a random angle
         const randomAngle = Math.random() * Math.PI / 3 + Math.PI / 6; // Adjust this angle as needed
-        ballSpeedX = 5 * Math.cos(randomAngle);
-        ballSpeedY = -5 * Math.sin(randomAngle);
+        ballSpeedX = 3 * Math.cos(randomAngle);
+        ballSpeedY = -3 * Math.sin(randomAngle);
     }
 }
 
