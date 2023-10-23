@@ -69,6 +69,8 @@ function update() {
     // Ball collision with bricks
     bricks.forEach((brick) => {
     const brickRect = brick.getBoundingClientRect();
+    console.log("Ball:", ballX, ballY);
+    console.log("Brick:", brickRect.left, brickRect.top, brickRect.right, brickRect.bottom);
 
     if (
         ballY + ballSpeedY > brickRect.top &&
