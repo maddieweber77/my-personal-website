@@ -13,8 +13,10 @@ const paddleWidth = 80;
 
 // Paddle movement
 document.addEventListener("mousemove", (event) => {
-    const mouseX = event.clientX - paddleWidth / 2;
-    if (mouseX >= 0 && mouseX <= 320) {
+    const container = document.getElementById("game-container");
+    const containerRect = container.getBoundingClientRect();
+    const mouseX = event.clientX - containerRect.left - paddleWidth / 2;
+    if (mouseX >= 0 && mouseX <= containerRect.width - paddleWidth) {
         paddle.style.left = mouseX + "px";
     }
 });
