@@ -49,11 +49,11 @@ function update() {
     // Check if the ball hits the bottom
         if (ballY + ballSpeedY > 300) {
     // Reset the ball to the center
-    ballX = 200;
-    ballY = 200;
-    let ballSpeedX = 0; // Initially, no movement
-    let ballSpeedY = 0; // Initially, no movement
-    startBallMovement()
+        ballX = 200;
+        ballY = 200;
+        ballSpeedX = 0; // no movement after hitting bottom
+        ballSpeedY = 0; // no movement after hitting bottom
+        startBallMovement()
         }
 
     // Ball collision with paddle
