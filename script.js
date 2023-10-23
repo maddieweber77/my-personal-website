@@ -51,6 +51,8 @@ function update() {
     // Reset the ball to the center
     ballX = 200;
     ballY = 200;
+    let ballSpeedX = 0; // Initially, no movement
+    let ballSpeedY = 0; // Initially, no movement
     startBallMovement()
         }
 
@@ -65,12 +67,12 @@ function update() {
         }
 
     // Ball collision with bricks
-        bricks.forEach((brick) => {
-            const brickRect = brick.getBoundingClientRect();
+    bricks.forEach((brick) => {
+    const brickRect = brick.getBoundingClientRect();
 
     if (
-        ballY + ballSpeedY < brickRect.bottom &&
         ballY + ballSpeedY > brickRect.top &&
+        ballY + ballSpeedY < brickRect.bottom &&
         ballX + ballSpeedX > brickRect.left &&
         ballX + ballSpeedX < brickRect.right
     ) {
