@@ -1,25 +1,36 @@
 // JavaScript (script.js)
 
 // Variables
+const container = document.getElementById("game-container");
 const paddle = document.getElementById("paddle");
 const ball = document.getElementById("ball");
 const bricks = document.querySelectorAll(".brick");
 
 let ballX = 200;
 let ballY = 200;
-let ballSpeedX = 5;
-let ballSpeedY = 5;
+let ballSpeedX = 0; // Initially, no movement
+let ballSpeedY = 0; // Initially, no movement
 const paddleWidth = 80;
+
+// Function to start the ball movement when you move your mouse
+function startBallMovement() {
+    if (ballSpeedX === 0 && ballSpeedY === 0) {
+        // Set the ball's speed to a random angle
+        const randomAngle = Math.random() * Math.PI / 3 + Math.PI / 6; // Adjust this angle as needed
+        ballSpeedX = 5 * Math.cos(randomAngle);
+        ballSpeedY = -5 * Math.sin(randomAngle);
+    }
+}
 
 // Paddle movement
 document.addEventListener("mousemove", (event) => {
-    const container = document.getElementById("game-container");
-    const containerRect = container.getBoundingClientRect();
-    const mouseX = event.clientX - containerRect.left - paddleWidth / 2;
-    if (mouseX >= 0 && mouseX <= containerRect.width - paddleWidth) {
+    startBallMovement(); // Call this function when moving the mouse
+    const mouseX = event.clientX - container.getBoundingClientRect().left - paddleWidth / 2;
+    if (mouseX >= 0 && mouseX <= container.offsetWidth - paddleWidth) {
         paddle.style.left = mouseX + "px";
     }
 });
+
 
 // Game loop
 function update() {
