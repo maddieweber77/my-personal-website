@@ -65,15 +65,20 @@ function update() {
         }
 
     // Ball collision with bricks
-    bricks.forEach((brick) => {
-        if (ballY + ballSpeedY < brick.getBoundingClientRect().bottom &&
-            ballY + ballSpeedY > brick.getBoundingClientRect().top &&
-            ballX + ballSpeedX > brick.getBoundingClientRect().left &&
-            ballX + ballSpeedX < brick.getBoundingClientRect().right) {
-            brick.style.display = "none";
-            ballSpeedY = -ballSpeedY;
-        }
-    });
+        bricks.forEach((brick) => {
+            const brickRect = brick.getBoundingClientRect();
+
+    if (
+        ballY + ballSpeedY < brickRect.bottom &&
+        ballY + ballSpeedY > brickRect.top &&
+        ballX + ballSpeedX > brickRect.left &&
+        ballX + ballSpeedX < brickRect.right
+    ) {
+        // Ball hits a brick
+        brick.style.display = "none";
+        ballSpeedY = -ballSpeedY; // Reverse ball's vertical speed
+    }
+});
 
     ball.style.left = ballX + "px";
     ball.style.top = ballY + "px";
